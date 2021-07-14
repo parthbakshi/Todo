@@ -1,0 +1,26 @@
+{% extends 'tutorial/base.html' %}
+{% block title %}
+    Todo list for {{ name }}
+{% endblock %}
+{% block content %}
+    <div id="main", class="main">
+    <form action="{% url 'get_list' id %}" method="post">
+    {% csrf_token %}
+    <p>{{ name }} Todo List </p>
+    <ul>
+    {% for item in items %}
+        {% if item.complete == True %}
+            <li><input type="checkbox" value="clicked"  name="c{{ item.id }}" checked>{{ item.text }}</li>
+        {%else %}
+            <li><input type="checkbox" value="clicked"  name="c{{ item.id }}">{{ item.text }}</li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    <button type="submit" name="save" value="save">Save</button>
+    </form>
+    <form action="{% url 'new_item' id %}" method="get">
+    {{ form.as_p }}
+    <button type="submit" name="Create" value="True">Create New todo item</button>
+    </form>
+    </div>
+{% endblock %}

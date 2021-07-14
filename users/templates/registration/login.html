@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} }
+
+{% block content %}
+<h1 Login page ></h1>
+<form method="post" class="create-form">
+{{ form.as_p }}
+    {% csrf_token %}
+
+<button type="submit" value="Login">Login</button>
+<a href="{% url 'dashboard' %}">Back to dashboard</a>
+</form>
+{% endblock %}
