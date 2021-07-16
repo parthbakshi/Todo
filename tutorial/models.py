@@ -15,7 +15,7 @@ class Todolist(models.Model):
 class items(models.Model):
     todolist = models.ForeignKey(Todolist, on_delete=models.CASCADE)
     text = models.CharField(max_length=500)
-    complete =  models.BooleanField()
+    complete = models.BooleanField()
     due_date = models.DateField()
 
     def __str__(self):
